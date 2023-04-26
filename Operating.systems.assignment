@@ -1,0 +1,29 @@
+#!/bin/bash
+
+while true; do
+    clear
+    echo "*******************************"
+    echo "* Bash Commands *"
+    echo "*******************************"
+    echo "1. List files"
+    echo "2. Show free disk space"
+    echo "3. Show system path"
+    echo "4. Display command history"
+    echo "5. Backup files"
+    echo "6. Exit"
+    echo "*******************************"
+    read -p "Enter your choice [1-6]: " choice
+    case $choice in
+        1) ls -la ;;
+        2) df -h ;;
+        3) echo $PATH ;;
+        4) history ;;
+        5) read -p "Enter directory to backup: " dir
+           mkdir BackupFolder
+           cp -R $dir BackupFolder
+           ls -la BackupFolder ;;
+        6) exit 0 ;;
+        *) read -p "Invalid option. Press enter to try again." ;;
+    esac
+    read -p "Press enter to continue."
+done
